@@ -14,12 +14,17 @@ class App extends React.Component {
         );
     }
 
-    render() {
+    //render healper method
+    renderContent() {
         if (this.state.errorMessage && !this.state.lat)
             return <div> Error: {this.state.errorMessage} </div>
         if (this.state.lat && !this.state.errorMessage)
             return <SeasonDisplay lat={this.state.lat} />
-        return <Spinner message = "Please accept loacation request..."/>
+        return <Spinner message="Please accept loacation request..." />
+    }
+
+    render() {
+        return <div className="border green"> {this.renderContent} </div>
     }
 }
 ReactDOM.render(<App />, document.querySelector("#root"));
